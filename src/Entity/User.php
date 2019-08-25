@@ -5,14 +5,18 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
     /**
+     * @Groups("user")
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -20,36 +24,43 @@ class User
     private $id;
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="string", length=255)
      */
     private $firstname;
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="string", length=255)
      */
     private $lastname;
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $apikey;
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="string", length=255)
      */
     private $address;
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="string", length=255)
      */
     private $country;
 
     /**
+     * @Groups("user")
      * @ORM\ManyToOne(targetEntity="App\Entity\Subscription")
      */
     private $subscription;
@@ -60,6 +71,7 @@ class User
     private $Card;
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="string", length=255, unique=true)
      * @Assert\NotBlank()
      */
@@ -212,10 +224,62 @@ class User
         return $this->roles;
     }
 
-    public function setRoles(string $roles): self
-    {
+    public function setRoles($roles){
         $this->roles = $roles;
-
         return $this;
+    }
+
+
+    /**
+     * Returns the password used to authenticate the user.
+     *
+     * This should be the encoded password. On authentication, a plain-text
+     * password will be salted, encoded, and then compared to this value.
+     *
+     * @return string The password
+     */
+    public function getPassword()
+    {
+        // TODO: Implement getPassword() method.
+    }
+
+    /**
+     * Returns the salt that was originally used to encode the password.
+     *
+     * This can return null if the password was not encoded using a salt.
+     *
+     * @return string|null The salt
+     */
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+        return null;
+    }
+
+    /**
+     * Returns the username used to authenticate the user.
+     *
+     * @return string The username
+     */
+    public function getUsername()
+    {
+        // TODO: Implement getUsername() method.
+        return $this->email;
+    }
+
+    /**
+     * Removes sensitive data from the user.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
+     */
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+
+    public function setPassword($password){
+        $this->password = $password;
     }
 }
