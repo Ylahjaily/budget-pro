@@ -29,10 +29,10 @@ class UsersControllerTest extends WebTestCase
             [
                 'HTTP_ACCEPT' => 'application/json' ,
                 'CONTENT_TYPE' => 'application/json' ,
-                'HTTP_X-AUTH-TOKEN' => 'ilo'
+                'HTTP_X-AUTH-TOKEN' => '2981'
             ],
-            '{"apiKey": "poitr","email": "mloie@gmail.com", "firstname": "bronle",
-                      "lastname": "toca", "birthday": "1993-03-21T00:00:00+02:00"}'
+            '{"apiKey": "croi","email": "antelo@gmail.com", "firstname": "ante",
+                      "lastname": "loco", "birthday": "1994-03-21T00:00:00+05:00"}'
         );
         $response = $client->getResponse();
         $content = $response->getContent();

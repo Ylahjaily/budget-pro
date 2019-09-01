@@ -37,6 +37,7 @@ class User implements UserInterface
 
     /**
      * @Groups("user")
+     * @ORM\GeneratedValue()
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $apikey;
@@ -80,7 +81,12 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="simple_array")
      */
-    private $roles = ['ROLE_USER', 'ROLE_ADMIN'];
+    private $roles = ['ROLE_USER'];
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $password;
 
     public function __construct()
     {
@@ -241,6 +247,7 @@ class User implements UserInterface
     public function getPassword()
     {
         // TODO: Implement getPassword() method.
+        return $this->password;
     }
 
     /**
