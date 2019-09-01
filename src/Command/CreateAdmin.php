@@ -13,7 +13,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
-class CreateAdminCommand extends Command
+class CreateAdmin extends Command
 {
 
     protected static $defaultName = 'app:create-admin';

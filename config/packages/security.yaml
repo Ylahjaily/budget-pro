@@ -10,7 +10,7 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         api:
-            anonymous: ~
+            anonymous: false
             pattern: ^/api(?!/doc$)
             stateless: true
             provider: your_db_provider
