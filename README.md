@@ -21,7 +21,12 @@ cp docker-compose.override.yml.dist docker-compose.override.yml
 #### Init
 
 ```bash
-cp .env.dist .env
 docker-compose up -d
 docker-compose exec --user=application web bash
-```
+docker-compose exec web composer install
+docker-compose exec web d:s:u --force
+docker-compose exec web doctrine:fixtures:load --purge-with-truncate
+
+#### Heroku
+
+https://budgetprojetcapi.herukoapp.com/api/doc
