@@ -1,0 +1,18 @@
+App\Entity\User:
+  user_{1..10}:
+    firstname: <firstName()>
+    lastname: <lastName()>
+    email: <email()>
+    createdAt: <dateTimeBetween('-100 years', '-10 years')>
+    apikey: <regexify('[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}')>
+    country: <country()>
+    address: <address()>
+
+  user_{1}:
+    firstname: <firstName()>
+    lastname: <lastName()>
+    email: <email()>
+    createdAt: <dateTimeBetween('-100 years', '-10 years')>
+    apikey: 2981
+    country: <country()>
+    address: <address()>
