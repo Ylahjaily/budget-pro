@@ -225,7 +225,7 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getRoles(): ?string
+    public function getRoles()
     {
         return $this->roles;
     }

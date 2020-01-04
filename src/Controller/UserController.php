@@ -11,6 +11,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use App\Repository\UserRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Validator\ConstraintViolation;
@@ -41,6 +42,15 @@ class UserController extends AbstractFOSRestController
      *
      */
     public function getApiUsers(){
+        $users = $this->userRepository->findAll();
+        return $this->view($users);
+    }
+
+    /**
+     * @Rest\Get("/users")
+     *
+     */
+    public function getApiUsersTest(){
         $users = $this->userRepository->findAll();
         return $this->view($users);
     }
